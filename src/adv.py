@@ -50,9 +50,6 @@ player_1 = Player('cobra g', room['outside'])
 # If the user enters "q", quit the game.
 
 while True:
-    print('Player 1 is in', player_1.current_room.room_name, '\n')
-    print('Room description:', player_1.current_room.description, '\n')
-
     user_input = input("Choose a direction to move in ('n', 's', 'e', 'w')")
 
     if user_input == 'n':
@@ -60,26 +57,34 @@ while True:
             # change current room
             player_1.current_room = player_1.current_room.n_to
             print('player moved north \n')
+            print('Player 1 is in', player_1.current_room.room_name, '\n')
+            print('Room description:', player_1.current_room.description, '\n')
         else:
-            print('no moves \n')
+            print('Can not move there, no room to go to\n')
 
     if user_input == 's':
         if player_1.current_room.s_to:
             player_1.current_room = player_1.current_room.s_to
             print('player moved south \n')
+            print('Player 1 is in', player_1.current_room.room_name, '\n')
+            print('Room description:', player_1.current_room.description, '\n')
         else:
-            print('no moves \n')
+            print('Can not move there, no room to go to\n')
     
     if user_input == 'e':
         if player_1.current_room.e_to:
             player_1.current_room = player_1.current_room.e_to
             print('player moved east \n')
+            print('Player 1 is in', player_1.current_room.room_name, '\n')
+            print('Room description:', player_1.current_room.description, '\n')
         else:
-            print('no moves \n')
+            print('Can not move there, no room to go to\n')
 
     if user_input == 'w':
         if player_1.current_room.w_to:
             player_1.current_room = player_1.current_room.w_to
             print('player moved west! \n')
+            print('Player 1 is in', player_1.current_room.room_name, '\n')
+            print('Room description:', player_1.current_room.description, '\n')
         else:
-            print('no moves \n')
+            print('Can not move there, no room to go to\n')
