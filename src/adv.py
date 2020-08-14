@@ -1,10 +1,9 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
-
 room = {
-    'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+    'outside':  Room("Outside Cave Entrance", "North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -23,7 +22,6 @@ earlier adventurers. The only exit is to the south."""),
 
 
 # Link rooms together
-
 room['outside'].n_to = room['foyer']
 room['foyer'].s_to = room['outside']
 room['foyer'].n_to = room['overlook']
@@ -33,11 +31,12 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-#
+
 # Main
-#
 
 # Make a new player object that is currently in the 'outside' room.
+player_1 = Player('cobra g', room['outside'])
+
 
 # Write a loop that:
 #
@@ -49,3 +48,38 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+while True:
+    print('Player 1 is in', player_1.current_room.room_name, '\n')
+    print('Room description:', player_1.current_room.description, '\n')
+
+    user_input = input("Choose a direction to move in ('n', 's', 'e', 'w')")
+
+    if user_input == 'n':
+        if player_1.current_room.n_to:
+            # change current room
+            player_1.current_room = player_1.current_room.n_to
+            print('player moved north \n')
+        else:
+            print('no moves \n')
+
+    if user_input == 's':
+        if player_1.current_room.s_to:
+            player_1.current_room = player_1.current_room.s_to
+            print('player moved south \n')
+        else:
+            print('no moves \n')
+    
+    if user_input == 'e':
+        if player_1.current_room.e_to:
+            player_1.current_room = player_1.current_room.e_to
+            print('player moved east \n')
+        else:
+            print('no moves \n')
+
+    if user_input == 'w':
+        if player_1.current_room.w_to:
+            player_1.current_room = player_1.current_room.w_to
+            print('player moved west! \n')
+        else:
+            print('no moves \n')
