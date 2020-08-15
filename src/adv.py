@@ -50,7 +50,7 @@ player_1 = Player('cobra g', room['outside'])
 # If the user enters "q", quit the game.
 
 while True:
-    user_input = input("Choose a direction to move in ('n', 's', 'e', 'w')")
+    user_input = input("Choose a direction to move in ('n', 's', 'e', 'w') \n")
 
     if user_input == 'n':
         if player_1.current_room.n_to:
