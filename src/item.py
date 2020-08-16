@@ -4,9 +4,9 @@
 # This will be the base class for specialized item types to be declared later.
 
 class Item:
-    def __init__(self, item_name, description):
-        self.item_name = item_name
+    def __init__(self, name, description):
+        self.name = name
         self.description = description
     
     def __str__(self):
-        return f"Item name: {self.item_name}, Item description: {self.description}"
+        return f"Item name: {self.name}, Item description: {self.description}"
