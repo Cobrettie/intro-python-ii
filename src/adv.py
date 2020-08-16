@@ -98,10 +98,16 @@ while True:
             print("Can not move there, no room to go to\n")
 
     if user_input == "Cobra":
-        add_item_input = input("Add item? y, n\n")
-        if add_item_input == "y":
-            new_item = input("Enter item name \n")
+        add_room_item_input = input("Add item to room? y, n\n")
+        if add_room_item_input == "y":
+            new_item = input("Enter item name\n")
             Cobra.current_room.items.append(new_item)
             print(Cobra.current_room.room_name, "Items:", Cobra.current_room.items)
-        elif add_item_input == "n":
-            alt_input = input("What would you like to do?")
+        elif add_room_item_input == "n":
+            pass
+
+        add_inventory_item = input("Add item to inventory? y, n\n")
+        if add_inventory_item == 'y':
+            new_inventory_item = input("Enter item name\n")
+            Cobra.inventory.append(new_inventory_item)
+            print(f"{Cobra.name}'s inventory: {Cobra.inventory}'")
