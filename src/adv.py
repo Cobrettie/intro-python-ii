@@ -91,3 +91,12 @@ while True:
             print('Room description:', player_1.current_room.description, '\n')
         else:
             print('Can not move there, no room to go to\n')
+
+    if user_input == 'Cobra':
+        add_item_input = input('Add item? y, n\n')
+        if add_item_input == 'y':
+            new_item = input('Enter item name \n')
+            player_1.current_room.items.append(new_item)
+            print(player_1.current_room.items)
+        elif add_item_input == 'n':
+            alt_input = input('What would you like to do?')
