@@ -6,7 +6,7 @@ room = {
     'outside':  Room("Outside Cave Entrance", "North of you, the cave mount beckons", ['dirt', 'rock', 'shrub', 'insect']),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east.""", ['rusty sword', 'empty chalice', 'shattered armor']),
+passages run north and east.""", ['rustysword', 'emptychalice', 'shatteredarmor']),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
@@ -35,7 +35,7 @@ room['treasure'].s_to = room['narrow']
 # Main
 
 # Make a new player object that is currently in the 'outside' room.
-Cobra = Player('Cobra', room['outside'])
+player = Player('player', room['outside'])
 
 
 # Write a loop that:
@@ -49,65 +49,97 @@ Cobra = Player('Cobra', room['outside'])
 #
 # If the user enters "q", quit the game.
 
+
+print("A path you will go down, not knowing where it will lead you. Until we meet again, friend\n")
+
 while True:
-    user_input = input("Choose a direction to move in ('n', 's', 'e', 'w', or 'q' to quit)")
+    user_input= input("Choose a direction to move in ('n', 's', 'e', 'w', or 'q' to quit)\n")
 
     if user_input == "q":
         break
 
-    if user_input == "n":
-        if Cobra.current_room.n_to:
-            # change current room
-            Cobra.current_room = Cobra.current_room.n_to
-            print(f"{Cobra.name} moved north \n")
-            print(f"{Cobra.current_room.room_name}\n")
-            print(f"{Cobra.current_room.description}\n")
+    split_input = user_input.split()
+    if len(split_input) == 1:
+        direction_attribute = f"{user_input}_to"
+        if hasattr(player.current_room, direction_attribute):
+            player.current_room = getattr(player.current_room, direction_attribute)
+            print(f"{player.current_room.room_name}. {player.current_room.description}\n")
             view_items = input("View this rooms items? y, n\n")
             if view_items == 'y':
-                print(Cobra.current_room.items)
+                print(player.current_room.items)
             if view_items == 'n':
                 print("On your way then...\n")
-        else:
-            print("Can not move there, no room to go to\n")
 
-    if user_input == "s":
-        if Cobra.current_room.s_to:
-            Cobra.current_room = Cobra.current_room.s_to
-            print("player moved south \n")
-            print("Player 1 is in", Cobra.current_room.room_name, "\n")
-            print("Room description:", Cobra.current_room.description, "\n")
         else:
-            print("Can not move there, no room to go to\n")
-    
-    if user_input == "e":
-        if Cobra.current_room.e_to:
-            Cobra.current_room = Cobra.current_room.e_to
-            print("player moved east \n")
-            print("Player 1 is in", Cobra.current_room.room_name, "\n")
-            print("Room description:", Cobra.current_room.description, "\n")
-        else:
-            print("Can not move there, no room to go to\n")
+            print("Choose a valid direction or command \n")
+            continue
 
-    if user_input == "w":
-        if Cobra.current_room.w_to:
-            Cobra.current_room = Cobra.current_room.w_to
-            print("player moved west! \n")
-            print("Player 1 is in", Cobra.current_room.room_name, "\n")
-            print("Room description:", Cobra.current_room.description, "\n")
-        else:
-            print("Can not move there, no room to go to\n")
+    elif len(split_input) == 2:
+        item_name = split_input[1]
+        if split_input[0].lower() == 'get':
+            
+
+
 
     if user_input == "Cobra":
         add_room_item_input = input("Add item to room? y, n\n")
         if add_room_item_input == "y":
             new_item = input("Enter item name\n")
-            Cobra.current_room.items.append(new_item)
-            print(Cobra.current_room.room_name, "Items:", Cobra.current_room.items)
+            player.current_room.items.append(new_item)
+            print(player.current_room.room_name, "Items:", player.current_room.items)
         elif add_room_item_input == "n":
             pass
 
         add_inventory_item = input("Add item to inventory? y, n\n")
         if add_inventory_item == 'y':
             new_inventory_item = input("Enter item name\n")
-            Cobra.inventory.append(new_inventory_item)
-            print(f"{Cobra.name}'s inventory: {Cobra.inventory}'")
+            player.inventory.append(new_inventory_item)
+            print(f"{player.name}'s inventory: {player.inventory}'")
+
+
+
+
+
+
+
+    # if user_input == "n":
+    #     if player.current_room.n_to:
+    #         # change current room
+    #         player.current_room = player.current_room.n_to
+    #         print(f"{player.name} moved north \n")
+    #         print(f"{player.current_room.room_name}\n")
+    #         print(f"{player.current_room.description}\n")
+    #         view_items = input("View this rooms items? y, n\n")
+    #         if view_items == 'y':
+    #             print(player.current_room.items)
+    #         if view_items == 'n':
+    #             print("On your way then...\n")
+    #     else:
+    #         print("Can not move there, no room to go to\n")
+
+    # if user_input == "s":
+    #     if player.current_room.s_to:
+    #         player.current_room = player.current_room.s_to
+    #         print("player moved south \n")
+    #         print("Player 1 is in", player.current_room.room_name, "\n")
+    #         print("Room description:", player.current_room.description, "\n")
+    #     else:
+    #         print("Can not move there, no room to go to\n")
+    
+    # if user_input == "e":
+    #     if player.current_room.e_to:
+    #         player.current_room = player.current_room.e_to
+    #         print("player moved east \n")
+    #         print("Player 1 is in", player.current_room.room_name, "\n")
+    #         print("Room description:", player.current_room.description, "\n")
+    #     else:
+    #         print("Can not move there, no room to go to\n")
+
+    # if user_input == "w":
+    #     if player.current_room.w_to:
+    #         player.current_room = player.current_room.w_to
+    #         print("player moved west! \n")
+    #         print("Player 1 is in", player.current_room.room_name, "\n")
+    #         print("Room description:", player.current_room.description, "\n")
+    #     else:
+    #         print("Can not move there, no room to go to\n")

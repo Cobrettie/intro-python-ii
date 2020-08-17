@@ -14,5 +14,18 @@ class Room:
         self.e_to = None
         self.w_to = None
 
+    #typehint for other devs 
+    def get_item(self, item_name: str):
+        # Returns the item corresponding to item_name if it exists in the room, otherwise returns None
+        for item in self.items:
+            if item.name.lower() == item_name.lower():
+                return item
+            return None
+
+# typehint... just getting used to it
+    def remove_item(self, item: Item):
+        self.items.remove(item)
+
+
     def __str__(self):
         return f"Room name: {self.room_name}, Room description: {self.description}"
