@@ -1,5 +1,6 @@
-from room import Room
 from player import Player
+from room import Room
+from item import Item
 
 # Declare all the rooms
 room = {
@@ -77,7 +78,16 @@ while True:
     elif len(split_input) == 2:
         item_name = split_input[1]
         if split_input[0].lower() == 'get':
-            
+            chosen_item = player.current_room.get_item(item_name)
+            if chosen_item:
+                # Item.on_take(chosen_item)
+                player.current_room.remove_item(chosen_item)
+                player.inventory.append(chosen_item)
+                print(f"Grabbed item. You now have {player.inventory}")
+            else:
+                print(f"{item_name} does not exist in this room")
+
+
 
 
 

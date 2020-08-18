@@ -3,6 +3,8 @@
 
 # needs name, current_room attributes
 
+from room import Room
+
 class Player:
     def __init__(self, name, current_room):
         self.name = name

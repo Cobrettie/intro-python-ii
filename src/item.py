@@ -10,3 +10,6 @@ class Item:
     
     def __str__(self):
         return f"Item name: {self.name}, Item description: {self.description}"
+
+    def on_take(self):
+        print(f"You picked up {self.name}")
