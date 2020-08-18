@@ -12,4 +12,7 @@ class Item:
         return f"Item name: {self.name}, Item description: {self.description}"
 
     def on_take(self):
-        print(f"You picked up {self.name}")
+        print(f"You have picked up {self.name}")
+
+    def on_drop(self):
+        print(f"You have dropped {self.name}")

@@ -83,9 +83,9 @@ while True:
                 # Item.on_take(chosen_item)
                 player.current_room.remove_item(chosen_item)
                 player.inventory.append(chosen_item)
-                print(f"Grabbed item. You now have {player.inventory}")
+                print(f"Grabbed item. You now have {player.inventory}\n")
             else:
-                print(f"{item_name} does not exist in this room")
+                print(f"{item_name} does not exist in this room\n")
 
 
 

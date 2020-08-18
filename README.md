@@ -88,26 +88,26 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
   * [x] Split the entered command and see if it has 1 or 2 words in it to determine
     if it's the first or second form.
 
-* Implement support for the verb `get` followed by an `Item` name. This will be
+* [x] Implement support for the verb `get` followed by an `Item` name. This will be
   used to pick up `Item`s.
 
-  * If the user enters `get` or `take` followed by an `Item` name, look at the
+  * [x] If the user enters `get` or `take` followed by an `Item` name, look at the
     contents of the current `Room` to see if the item is there.
 
-     * If it is there, remove it from the `Room` contents, and add it to the
+     * [x] If it is there, remove it from the `Room` contents, and add it to the
        `Player` contents.
 
-     * If it's not there, print an error message telling the user so.
+     * [x] If it's not there, print an error message telling the user so.
 
-     * Add an `on_take` method to `Item`.
+     * [x] Add an `on_take` method to `Item`.
 
-        * Call this method when the `Item` is picked up by the player.
+        * [x] Call this method when the `Item` is picked up by the player.
 
-        * `on_take` should print out "You have picked up [NAME]" when you pick up an item.
+        * [x] `on_take` should print out "You have picked up [NAME]" when you pick up an item.
 
-        * The `Item` can use this to run additional code when it is picked up.
+        * [x] The `Item` can use this to run additional code when it is picked up.
 
-     * Add an `on_drop` method to `Item`. Implement it similar to `on_take`.
+     * [x] Add an `on_drop` method to `Item`. Implement it similar to `on_take`.
 
 * Implement support for the verb `drop` followed by an `Item` name. This is the
   opposite of `get`/`take`.
